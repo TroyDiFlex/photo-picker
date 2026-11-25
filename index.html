@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Фото по артикулу</title>
+  <meta name="description" content="Найдите фотографии запчастей на Google Диске и eBay, выберите нужное и скачайте одним архивом.">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">▧</span><span>Фото по артикулу<small>Google Диск + eBay</small></span></a>
+    <div class="header-actions"><button id="connect" class="button secondary" type="button">Войти через Google</button><button id="download" class="button primary" type="button" disabled>Скачать выбранное <span id="selected-count">0</span></button></div>
+  </header>
+  <main>
+    <section class="search-section" aria-labelledby="search-heading">
+      <div class="intro"><p class="eyebrow">ФОТОГРАФИИ ЗАПЧАСТЕЙ</p><h1 id="search-heading">Фото по списку артикулов</h1><p>По одному артикулу на строку. Приписку VRN уберём автоматически.</p></div>
+      <form id="search-form"><label for="articles">Список артикулов</label><textarea id="articles" rows="5" spellcheck="false" placeholder="038145209VRN&#10;A2710703501VRN&#10;0AM927769GVRN" required></textarea><div class="search-bottom"><span>Ctrl + Enter — найти</span><button id="search" class="button primary" type="submit">Найти фотографии</button></div></form>
+    </section>
+    <details id="settings" class="settings"><summary>Подключение и настройки <span id="settings-status"></span></summary><form id="settings-form"><div class="settings-fields"><label>Google OAuth Client ID<input id="client-id" autocomplete="off" placeholder="…apps.googleusercontent.com"></label><label>Подключение eBay (необязательно)<input id="backend-url" type="url" placeholder="https://…"></label></div><p>Google запрашивает чтение Диска. Результаты ограничены папкой фотографий. Токен хранится в памяти вкладки. Используется ваш аккаунт; подключение eBay не получает данные входа Google.</p><button class="button secondary" type="submit">Сохранить настройки</button><span id="settings-message" role="status"></span></form></details>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <div class="results-heading"><h2 id="results-title">Ваши файлы</h2><span id="results-count"></span><button id="cancel-download" class="text-button" type="button" hidden>Отменить скачивание</button></div>
+    <div id="progress" class="download-progress" role="status" hidden></div>
+    <section id="results" aria-label="Результаты поиска"><div class="empty"><span class="empty-icon" aria-hidden="true">▧</span><h2>Вставьте список артикулов</h2><p>Для каждого появится свой блок с файлами.<br>Выберите нужное и скачайте всё одним ZIP-архивом с папками.</p></div></section>
+  </main>
+  <footer>Файлы Google Диска доступны в соответствии с правами вашего аккаунта.</footer>
+</body>
+</html>
